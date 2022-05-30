@@ -10,15 +10,27 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-changed": "^4.0.3",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.7.0",
     "gulp-html": "^4.0.0",
+    "gulp-imagemin": "7.1.0",
+    "gulp-js-import": "^1.0.6",
+    "gulp-open": "^3.0.1",
     "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "mozjpeg": "^8.0.0",
     "node-sass": "^7.0.1",
+    "optipng-bin": "^9.0.0",
+    "pngquant-bin": "^8.0.1",
     "sass": "^1.52.1"
   },
   "dependencies": {
+    "@babel/core": "^7.18.2",
     "gulp-sourcemaps": "^3.0.0",
     "npm": "^6.14.17"
   }

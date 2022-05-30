@@ -7,16 +7,29 @@ const sourceMap = require('gulp-sourcemaps');
 const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const connect = require('gulp-connect');
+const babel = require('gulp-babel');
+const uglify = require('gulp-uglify');
 
-let outDir = './dist/';
+const open = require('gulp-open');
+const jsImport = require('gulp-js-import');
 
-const html = () => {
-  return src('src/index.html')
-    .pipe(dest(outDir))
+const changed = require('gulp-changed');
+const imagemin = require('gulp-imagemin');
+
+
+const localServer = {
+  out: './dist/',
+  port: 9090,
+  url: 'http://localhost:',
+}
+
+function html() {
+  return src('src/**/*.html')
+    .pipe(dest(localServer.out))
     .pipe(connect.reload());;
 };
 
-function buildStyles() {
+function css() {
   return src('./src/sass/main.scss')
     .pipe(sourceMap.init())
     .pipe(sass().on('error', sass.logError))
@@ -24,28 +37,46 @@ function buildStyles() {
     .pipe(sourceMap.write())
     .pipe(cleanCSS({ compatibility: 'ie8' }))
     .pipe(concat('bundle.css'))
-    .pipe(dest(`${outDir}css`))
+    .pipe(dest(`${localServer.out}css`))
     .pipe(connect.reload());
 };
 
-
-
-function gulpWatch() {
-  watch('./src/sass/**/*.scss', buildStyles);
+function js() {
+  return src('./src/**/*.js')
+    .pipe(changed('./dist/**/*.js'))
+    .pipe(jsImport({ hideConsole: true }))
+    .pipe(babel())
+    .pipe(uglify())
+    .pipe(dest(`${localServer.out}`));
 }
 
-function htmlWatch() {
+function img() {
+  return src('src/img/**/*')
+    .pipe(changed('./dist/img/'))
+    .pipe(imagemin())
+    .pipe(dest(`${localServer.out}img`))
+};
+
+function gulpWatch() {
   watch('./src/**/*.html', html);
+  watch('./src/sass/**/*.scss', css);
+  watch('./src/js/**/*.js', js);
+  watch('./src/img/**/*', img);
 }
 
 function server() {
   return connect.server({
-    port: 8000,
-    root: outDir,
-    livereload: true
+    port: localServer.port,
+    root: localServer.out,
+    livereload: true,
   })
 }
 
-exports.dev = parallel(server, htmlWatch, gulpWatch);
+function openLocal() {
+  return src('./dist/index.html')
+    .pipe(open({ uri: `${localServer.url}${localServer.port}/` }))
+}
+
+exports.dev = parallel(server, html, css, js, img, gulpWatch, openLocal);
 
 
