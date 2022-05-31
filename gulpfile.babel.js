@@ -1,4 +1,3 @@
-'use strict';
 
 const { src, dest, watch, parallel } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
@@ -9,12 +8,10 @@ const concat = require('gulp-concat');
 const connect = require('gulp-connect');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
-
+const jshint = require('gulp-jshint');
 const open = require('gulp-open');
 const fileinclude = require('gulp-file-include');
-const include = require('gulp-include')
 const del = require('del');
-
 const changed = require('gulp-changed');
 const imagemin = require('gulp-imagemin');
 
@@ -48,17 +45,24 @@ function css() {
 };
 
 function js() {
-  return src('./src/js/index.js')
+  return src('./src/**/*.js')
     .pipe(changed('./dist/js/*.js'))
-    .pipe(include({
-      extensions: 'js',
-      hardFail: true,
-      separateInputs: true,
+    .pipe(sourceMap.init())
+    .pipe(babel({
+      presets: ['@babel/preset-env', "@babel/react"],
+      plugins: ["@babel/plugin-proposal-class-properties"]
     }))
-    .on('error', console.log)
-    .pipe(babel())
+    .pipe(concat('index.js'))
     .pipe(uglify())
+    .pipe(sourceMap.write('.'))
     .pipe(dest(`${localServer.out}/js`));
+}
+
+
+function lint() {
+  return src('./src/js/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
 }
 
 function img() {
@@ -92,6 +96,6 @@ function openLocal() {
     .pipe(open({ uri: `${localServer.url}${localServer.port}/` }))
 }
 
-exports.dev = parallel(clean, server, html, css, js, img, gulpWatch);
+exports.dev = parallel(clean, lint, server, html, css, js, img, gulpWatch);
 
 
