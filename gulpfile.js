@@ -11,7 +11,9 @@ const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 
 const open = require('gulp-open');
-const jsImport = require('gulp-js-import');
+const fileinclude = require('gulp-file-include');
+const include = require('gulp-include')
+const del = require('del');
 
 const changed = require('gulp-changed');
 const imagemin = require('gulp-imagemin');
@@ -25,6 +27,10 @@ const localServer = {
 
 function html() {
   return src('src/**/*.html')
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
     .pipe(dest(localServer.out))
     .pipe(connect.reload());;
 };
@@ -42,12 +48,17 @@ function css() {
 };
 
 function js() {
-  return src('./src/**/*.js')
-    .pipe(changed('./dist/**/*.js'))
-    .pipe(jsImport({ hideConsole: true }))
+  return src('./src/js/index.js')
+    .pipe(changed('./dist/js/*.js'))
+    .pipe(include({
+      extensions: 'js',
+      hardFail: true,
+      separateInputs: true,
+    }))
+    .on('error', console.log)
     .pipe(babel())
     .pipe(uglify())
-    .pipe(dest(`${localServer.out}`));
+    .pipe(dest(`${localServer.out}/js`));
 }
 
 function img() {
@@ -64,6 +75,10 @@ function gulpWatch() {
   watch('./src/img/**/*', img);
 }
 
+function clean() {
+  return del(['dist/**', '!dist'])
+}
+
 function server() {
   return connect.server({
     port: localServer.port,
@@ -77,6 +92,6 @@ function openLocal() {
     .pipe(open({ uri: `${localServer.url}${localServer.port}/` }))
 }
 
-exports.dev = parallel(server, html, css, js, img, gulpWatch, openLocal);
+exports.dev = parallel(clean, server, html, css, js, img, gulpWatch);
 
 

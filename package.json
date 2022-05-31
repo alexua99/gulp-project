@@ -31,6 +31,9 @@
   },
   "dependencies": {
     "@babel/core": "^7.18.2",
+    "del": "^6.1.1",
+    "gulp-file-include": "^2.3.0",
+    "gulp-include": "^2.4.1",
     "gulp-sourcemaps": "^3.0.0",
     "npm": "^6.14.17"
   }

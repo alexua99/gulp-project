@@ -1,4 +1,5 @@
-import "./dd"
+import { Cart } from 'cart.js';
 
-const sasha = [1, 2, 3, 45];
-console.log(a);
+let cart = new Cart();
+
+console.log(cart.getItems());
