@@ -34,7 +34,7 @@ function html() {
       prefix: '@@',
       basepath: '@file'
     }))
-    .pipe(mode.production(htmlmin({ collapseWhitespace: true, removeComments: true, })))
+    .pipe(mode.production(htmlmin({ collapseWhitespace: true, removeComments: true, }))) //видаляє коментарі при Білд сборці
     .pipe(dest(localServer.out))
     .pipe(connect.reload());;
 };
@@ -107,6 +107,8 @@ function openLocal() {
   return src(`${localServer.out}index.html`)
     .pipe(open({ uri: `${localServer.url}${localServer.port}/` }))
 }
+
+// setTimeout(openLocal, 2000); //Відкриває автоматов в браузері
 
 exports.dev = parallel(clean, server, html, css, js, img, gulpWatch); //тут послідовність функцій які запускаются, наприклад ви можете додати щоб автоматом браузер відкривався openLocal
 
