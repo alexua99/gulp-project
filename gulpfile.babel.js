@@ -14,6 +14,9 @@ const fileinclude = require('gulp-file-include');
 const del = require('del');
 const changed = require('gulp-changed');
 const imagemin = require('gulp-imagemin');
+const autoprefixer = require('gulp-autoprefixer');
+const mode = require('gulp-mode')();
+const htmlmin = require('gulp-htmlmin');
 
 //шлях на локальній сервак
 const localServer = {
@@ -29,6 +32,7 @@ function html() {
       prefix: '@@',
       basepath: '@file'
     }))
+    .pipe(mode.production(htmlmin({ collapseWhitespace: true })))
     .pipe(dest(localServer.out))
     .pipe(connect.reload());;
 };
@@ -38,9 +42,10 @@ function css() {
   return src('./src/sass/main.scss')
     .pipe(sourceMap.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(miniFycss())
+    .pipe(mode.production(miniFycss()))
     .pipe(sourceMap.write())
-    .pipe(cleanCSS({ compatibility: 'ie8' }))
+    .pipe(autoprefixer({ overrideBrowserslist: ['IE 6', 'Chrome 9', 'Firefox 14'] }))
+    .pipe(mode.production(cleanCSS({ compatibility: 'ie8' })))
     .pipe(concat('bundle.min.css'))
     .pipe(dest(`${localServer.out}css`))
     .pipe(connect.reload());
@@ -55,8 +60,8 @@ function js() {
       presets: ['@babel/preset-env', "@babel/react"],
       plugins: ["@babel/plugin-proposal-class-properties"]
     }))
-    // .pipe(concat('index.min.js'))
-    .pipe(uglify())
+    // .pipe(concat('index.min.js')) //Якшо потрібно все деплоїти в один файлік
+    .pipe(mode.production(uglify()))
     .pipe(sourceMap.write('.'))
     .pipe(dest(`${localServer.out}/`));
 }

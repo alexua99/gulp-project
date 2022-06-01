@@ -7,5 +7,6 @@ cd on folder ==> package.json зайти в папку де знаходится
 npm install
 
 ###start project### щоб стартонути проєкт треба в термінали написати
-npm start
+npm run start:dev        Запустити в режимі розробника
+npm run start:build      Запустити в режимі родакшену
 
