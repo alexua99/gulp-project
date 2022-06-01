@@ -34,7 +34,7 @@ function html() {
       prefix: '@@',
       basepath: '@file'
     }))
-    .pipe(mode.production(htmlmin({ collapseWhitespace: true, removeComments: true })))
+    .pipe(mode.production(htmlmin({ collapseWhitespace: true, removeComments: true, })))
     .pipe(dest(localServer.out))
     .pipe(connect.reload());;
 };
