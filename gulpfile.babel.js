@@ -39,7 +39,7 @@ function css() {
     .pipe(miniFycss())
     .pipe(sourceMap.write())
     .pipe(cleanCSS({ compatibility: 'ie8' }))
-    .pipe(concat('bundle.css'))
+    .pipe(concat('bundle.min.css'))
     .pipe(dest(`${localServer.out}css`))
     .pipe(connect.reload());
 };
@@ -52,10 +52,10 @@ function js() {
       presets: ['@babel/preset-env', "@babel/react"],
       plugins: ["@babel/plugin-proposal-class-properties"]
     }))
-    .pipe(concat('index.js'))
+    // .pipe(concat('index.min.js'))
     .pipe(uglify())
     .pipe(sourceMap.write('.'))
-    .pipe(dest(`${localServer.out}/js`));
+    .pipe(dest(`${localServer.out}/`));
 }
 
 
