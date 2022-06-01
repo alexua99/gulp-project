@@ -1,11 +1,10 @@
+//variables
+@import './variables/_color';
+
+
+//global
+@import './global/fonts.scss';
+@import './global/global.scss';
+
+//page
 @import "./page/header.scss";
-
-h2 {
-    color: yellow;
-
-}
-
-h1 {
-    color: red;
-
-}
