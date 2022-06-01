@@ -36,7 +36,7 @@ function html() {
     }))
     .pipe(mode.production(htmlmin({ collapseWhitespace: true, removeComments: true, }))) //видаляє коментарі при Білд сборці
     .pipe(dest(localServer.out))
-    .pipe(connect.reload());;
+    .pipe(connect.reload());
 };
 
 //функція яка всі css файли додає в 1 і компілює scss в css і сжимає його
