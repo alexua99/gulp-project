@@ -18,7 +18,7 @@ const imagemin = require('gulp-imagemin');
 
 const localServer = {
   out: './dist/',
-  port: 9090,
+  port: 9091,
   url: 'http://localhost:',
 }
 
