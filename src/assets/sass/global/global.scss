@@ -1,9 +1,41 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+body {
+    font-family: $main-font;
 }
 
-body {
-    font-family: $main-fons;
+.logo {
+    min-width: 135px;
+    display: block;
+    margin-right: 50px;
+}
+
+.container {
+    max-width: 1179px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 64px;
+    letter-spacing: 0.05em;
+    color: $color-black;
+    font-family: $sub-font;
+}
+
+.sub-title {
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 166%;
+    letter-spacing: 0.1em;
+    color: $color-black;
+    font-family: $sub-font;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 32px;
+    letter-spacing: 0.05em;
+    color: $color-text;
 }
