@@ -6,6 +6,8 @@ body {
     min-width: 135px;
     display: block;
     margin-right: 50px;
+    z-index: 10;
+    position: relative;
 }
 
 .container {
@@ -21,6 +23,11 @@ body {
     letter-spacing: 0.05em;
     color: $color-black;
     font-family: $sub-font;
+
+    @media (max-width: $tab) {
+        font-size: 33px;
+        line-height: 50px;
+    }
 }
 
 .sub-title {
@@ -38,4 +45,16 @@ body {
     line-height: 32px;
     letter-spacing: 0.05em;
     color: $color-text;
+
+    @media (max-width: $tab) {
+        font-size: 16px;
+        line-height: 27px;
+    }
 }
+
+// @media (max-width: 991px) {
+//     .title {
+//         font-size: 33px;
+//         line-height: 50px;
+//     }
+// }
