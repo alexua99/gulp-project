@@ -102,6 +102,7 @@
     }
 
     &__gam-line {
+        transition: all 0.7s;
 
         @media (max-width: $tab) {
             width: 24px;
@@ -122,9 +123,20 @@
                 display: flex;
             }
 
-            // ~.gam-btn {
-            //     background-color: red;
-            // }
+            ~.gam-btn {
+
+                .header__gam-line:first-child {
+                    transform: rotate(311deg) translate(-3px, 3px);
+                }
+
+                .header__gam-line:nth-child(2) {
+                    display: none;
+                }
+
+                .header__gam-line:last-child {
+                    transform: rotate(230deg) translate(2px, 3px);
+                }
+            }
         }
     }
 }

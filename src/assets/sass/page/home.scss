@@ -1,0 +1,44 @@
+.home {
+
+    //hero section
+    .hero {
+        &__title {
+            max-width: 710px;
+            padding: 120px 0;
+
+            @media (max-width: $tab) {
+                padding: 64px 0 40px;
+            }
+        }
+    }
+
+    //hero section end
+
+    //slider section
+    .slider {
+        &__container {
+            display: flex;
+            gap: 32px;
+            overflow: scroll;
+            padding: $conteiner-size;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        &__item {
+            min-width: 544px;
+
+            @media (max-width: $tab) {
+                min-width: 257px;
+            }
+        }
+
+        &__img {
+            margin-bottom: 16px;
+        }
+    }
+
+    //slider section end
+}

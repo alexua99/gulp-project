@@ -13,7 +13,7 @@ body {
 .container {
     max-width: 1179px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: $conteiner-size;
 }
 
 .title {
@@ -50,6 +50,12 @@ body {
         font-size: 16px;
         line-height: 27px;
     }
+}
+
+.h5 {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
 }
 
 // @media (max-width: 991px) {
