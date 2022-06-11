@@ -1,0 +1,22 @@
+.blog {
+    .categories {
+        &__list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 126px 38px;
+
+            @media (max-width: $tab) {
+                grid-template-columns: 1fr;
+                grid-gap: 48px;
+            }
+        }
+
+        .posts {
+            &__img {
+                max-height: 250px;
+                object-fit: cover;
+                object-position: 0 -121px;
+            }
+        }
+    }
+}

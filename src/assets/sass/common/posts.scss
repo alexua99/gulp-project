@@ -1,0 +1,14 @@
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &__description {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__text {
+        margin-top: auto;
+    }
+}

@@ -23,7 +23,7 @@ const localServer = {
   src: 'src/',
   assets: './src/assets/',
   out: './dist/',
-  port: 9091,
+  port: 9099,
   url: 'http://localhost:',
 }
 
@@ -108,7 +108,7 @@ function openLocal() {
     .pipe(open({ uri: `${localServer.url}${localServer.port}/` }))
 }
 
-// setTimeout(openLocal, 2000); //Відкриває автоматов в браузері
+setTimeout(openLocal, 2000); //Відкриває автоматов в браузері
 
 exports.dev = parallel(clean, server, html, css, js, img, gulpWatch); //тут послідовність функцій які запускаются, наприклад ви можете додати щоб автоматом браузер відкривався openLocal
 

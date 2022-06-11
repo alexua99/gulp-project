@@ -52,15 +52,38 @@ body {
     }
 }
 
+.h3 {
+    font-family: $sub-font;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 166%;
+    letter-spacing: 0.1em;
+    color: $color-black;
+}
+
 .h5 {
     font-weight: 400;
     font-size: 16px;
     line-height: 27px;
+    color: $color-h5;
 }
 
-// @media (max-width: 991px) {
-//     .title {
-//         font-size: 33px;
-//         line-height: 50px;
-//     }
-// }
+.h6 {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0.1em;
+    color: $color-h6;
+}
+
+.h9 {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 27px;
+    letter-spacing: 0.1em;
+    color: $color-h6;
+}
+
+.arrow {
+    width: 23px;
+}
