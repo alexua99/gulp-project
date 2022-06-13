@@ -1,0 +1,27 @@
+.works {
+    .hero {
+        display: flex;
+        justify-content: space-between;
+        padding: 128px 0;
+
+        &__text {
+            max-width: 544px;
+        }
+    }
+
+    .works-list {
+        display: flex;
+        flex-direction: column;
+
+        &__item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+
+
+        &__img {
+            max-width: 544px;
+        }
+    }
+}
