@@ -1,24 +1,12 @@
-//Vriables
-@import './variables/fonst';
-@import './variables/color';
-@import './variables/sizing';
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
-//Global
-@import './global/resets.scss';
-@import './global/global.scss';
-
-
-//Common
-@import './common/header.scss';
-@import './common/footer.scss';
-@import './common/posts.scss';
-@import './common/form.scss';
-
-
-//Pages
-@import './page/home.scss';
-@import './page/about.scss';
-@import './page/works.scss';
-@import './page/blog.scss';
-@import './page/blog/post.scss';
-@import './page/contacts.scss';
+.hero {
+    &__container {
+        font-size: 40px;
+        color: red;
+    }
+}

@@ -49,7 +49,7 @@ function css() {
     .pipe(autoprefixer({ overrideBrowserslist: ['IE 6', 'Chrome 9', 'Firefox 14'] }))
     .pipe(mode.production(cleanCSS({ compatibility: 'ie8' })))
     .pipe(concat('bundle.min.css'))
-    .pipe(dest(`${localServer.out}css`))
+    .pipe(dest(`${localServer.out}`))
     .pipe(connect.reload());
 };
 
@@ -80,7 +80,7 @@ function img() {
   return src(`${localServer.assets}img/**/*`)
     .pipe(changed(`${localServer.out}img/`))
     .pipe(imagemin())
-    .pipe(dest(`${localServer.out}img`))
+    .pipe(dest(`${localServer.out}`))
 };
 
 //Ватч функція яка слідкуя за зміною в файлах в лайв режимі

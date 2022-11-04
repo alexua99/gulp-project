@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "gulp dev",
+    "start": "gulp dev",
     "start:build": "gulp dev --production"
   },
   "author": "",
@@ -36,10 +36,9 @@
     "imagemin-pngquant": "^9.0.2",
     "jshint": "^2.13.4",
     "mozjpeg": "^8.0.0",
-    "node-sass": "^7.0.1",
     "optipng-bin": "^9.0.0",
     "pngquant-bin": "^8.0.1",
-    "sass": "^1.52.1"
+    "sass": "^1.56.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.3",
@@ -48,6 +47,7 @@
     "gulp-file-include": "^2.3.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-include": "^2.4.1",
-    "gulp-sourcemaps": "^3.0.0"
+    "gulp-sourcemaps": "^3.0.0",
+    "sass-loader": "^13.1.0"
   }
 }
