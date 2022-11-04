@@ -80,7 +80,7 @@ function img() {
   return src(`${localServer.assets}img/**/*`)
     .pipe(changed(`${localServer.out}img/`))
     .pipe(imagemin())
-    .pipe(dest(`${localServer.out}`))
+    .pipe(dest(`${localServer.out}/img`))
 };
 
 //Ватч функція яка слідкуя за зміною в файлах в лайв режимі
