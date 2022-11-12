@@ -16,3 +16,10 @@ li {
 a {
     text-decoration: none;
 }
+
+input,
+select {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}

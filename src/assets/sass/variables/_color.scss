@@ -1,4 +1,19 @@
 // Color 
 
+// scss Змінна
 $color-black: #000000;
+$color-white: #ffffff;
 $color-grey: #F4F4F4;
+$color-grey-500: #7B7B7B;
+$color-grey-700: #565656;
+
+$color-moda-bg: rgba(0, 0, 0, 0.485);
+
+
+
+// css Змінна
+:root {
+    --color-black: #000000;
+    --color-grey: #F4F4F4;
+    // var(--color-grey)
+}

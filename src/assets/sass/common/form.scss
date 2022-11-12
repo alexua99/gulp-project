@@ -1,0 +1,41 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 43px;
+
+    &__tilte {
+        font-size: 16px;
+        line-height: 27px;
+        letter-spacing: 0.05em;
+        color: $color-grey-700;
+        display: block;
+
+    }
+
+    &__input {
+        color: $color-grey-500;
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: 0.1em;
+        padding: 9px 0;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid $color-black;
+        cursor: pointer;
+
+        &:focus {
+            border-bottom: 1px solid blue;
+        }
+
+        &:hover {
+            border-bottom: 1px solid green;
+        }
+
+        &::placeholder {
+            color: $color-grey-500;
+            font-size: 12px;
+            line-height: 20px;
+            letter-spacing: 0.1em;
+        }
+    }
+}

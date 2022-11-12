@@ -45,8 +45,54 @@
 
        <main class="home-page">
           <section>
-            <div class="container">   <h1>Home page</h1></div>
-         
+            <div class="container">   <h1>Home page</h1>
+            
+            <button id="btn1" class="button button--icon">
+                Send
+            </button>
+           
+                <div class="home-page__modal-container">
+                    <div class="home-page__modal">
+                        <div class="home-page__modal-close">X</div>
+                        <h2 class="title home-page__modal-title">
+                            Contact Us
+                        </h2>
+                        <p class="h6 home-page__modal-text">
+                            If you need our help with your user account, have questions about how to use the platform or are
+                        </p>
+                        <form class="form" action="" netlify>
+        
+                            <div class="form__fields">
+                                <span class="form__tilte">Name*</span>
+                                <input class="form__input" type="text" placeholder="Walter Moss" required>
+                            </div>
+    
+                            <div class="form__fields">
+                                <span class="form__tilte">Email*</span>
+                                <input class="form__input" type="email" placeholder="Walter Moss" required>
+                            </div>
+    
+                            <div class="form__fields">
+                            <select class="form__input"  name="Reason for contact" id="">
+                                <option value="1">Reason for contact</option>
+                                <option value="2">Ukraine</option>
+                                <option value="3">USA</option>
+                                <option value="4">Italy</option>
+                            </select>
+                            </div>
+    
+                            <div class="form__fields">
+                                <span class="form__tilte">Message*</span>
+                                <input class="form__input" type="text" placeholder="Walter Moss" required>
+                            </div>
+    
+                            <button type="submit" class="button">
+                                Send
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
           </section>
        </main>
 

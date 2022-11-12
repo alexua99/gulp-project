@@ -1,5 +1,6 @@
 body {
     font-family: $sub-fonts;
+    font-weight: 400;
 }
 
 .container {
@@ -24,7 +25,12 @@ body {
     transition: transform 0.3s ease-in-out;
     display: block;
 
-    &:hover {
-        transform: scale(1.1);
+    @media (max-width:tablet) {
+        transition: none;
+
+        &:hover {
+            transform: scale(1.1);
+        }
     }
+
 }
