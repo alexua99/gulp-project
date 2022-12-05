@@ -9,7 +9,6 @@ const connect = require('gulp-connect');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const jshint = require('gulp-jshint');
-const open = require('gulp-open');
 const fileinclude = require('gulp-file-include');
 const del = require('del');
 const changed = require('gulp-changed');
@@ -17,6 +16,7 @@ const imagemin = require('gulp-imagemin');
 const autoprefixer = require('gulp-autoprefixer');
 const mode = require('gulp-mode')();
 const htmlmin = require('gulp-htmlmin');
+
 
 //шлях до папок
 const localServer = {
@@ -39,13 +39,23 @@ function html() {
     .pipe(connect.reload());
 };
 
+function file() {
+  return src([`${localServer.src}/*.*`, `!${localServer.src}/index.html`])
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(dest(localServer.out))
+};
+
+
 //функція яка всі css файли додає в 1 і компілює scss в css і сжимає його
 function css() {
   return src(`${localServer.assets}sass/main.scss`)
     .pipe(sourceMap.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(mode.production(miniFycss()))
-    .pipe(sourceMap.write())
+    .pipe(mode.development(sourceMap.write()))
     .pipe(autoprefixer({ overrideBrowserslist: ['IE 6', 'Chrome 9', 'Firefox 14'] }))
     .pipe(mode.production(cleanCSS({ compatibility: 'ie8' })))
     .pipe(concat('bundle.min.css'))
@@ -102,14 +112,11 @@ function server() {
     livereload: true,
   })
 }
-//Автоматов відкриває в браузері, по дефолту я не додавай в exports.dev
-function openLocal() {
-  return src(`${localServer.out}index.html`)
-    .pipe(open({ uri: `${localServer.url}${localServer.port}/` }))
-}
 
-// setTimeout(openLocal, 2000); //Відкриває автоматов в браузері
 
-exports.dev = parallel(clean, server, html, css, js, img, gulpWatch); //тут послідовність функцій які запускаются, наприклад ви можете додати щоб автоматом браузер відкривався openLocal
+exports.dev = parallel(clean, server, html, css, js, img, file, gulpWatch); //тут послідовність функцій які запускаются, наприклад ви можете додати щоб автоматом браузер відкривався openLocal
 
-exports.build = parallel(clean, html, css, js, img); 
+exports.build = parallel(clean, html, css, js, img, file);
+
+
+
