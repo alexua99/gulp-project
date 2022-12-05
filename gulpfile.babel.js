@@ -116,7 +116,7 @@ function server() {
 
 exports.dev = parallel(clean, server, html, css, js, img, file, gulpWatch); //тут послідовність функцій які запускаются, наприклад ви можете додати щоб автоматом браузер відкривався openLocal
 
-exports.build = parallel(clean, html, css, js, img);
+exports.build = parallel(clean, html, css, js, img, file);
 
 
 
